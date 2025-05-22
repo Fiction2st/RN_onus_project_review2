@@ -13,6 +13,7 @@ import { Profile } from './screens/Profile';
 import { Settings } from './screens/Settings';
 import { Updates } from './screens/Updates';
 import { NotFound } from './screens/NotFound';
+import Home2 from "./screens/Home2";
 
 const HomeTabs = createBottomTabNavigator({
   screens: {
@@ -30,6 +31,15 @@ const HomeTabs = createBottomTabNavigator({
             }}
           />
         ),
+      },
+    },
+    Home2: { // 추가 작성을 통해 navigator 탭 바를 추가할 수 있음, 보통 최대 5개
+      screen: Home2,
+      screenOptions: {
+        tabBarLabelStyle: {
+          fontFamily: 'NotoSansKR',
+          fontSize: 14,
+        },
       },
     },
     Updates: {
