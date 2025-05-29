@@ -3,36 +3,39 @@ import {SafeAreaView, ScrollView, StyleSheet, TouchableOpacity, View} from 'reac
 import {useNavigation} from "@react-navigation/native";
 import {useEffect, useState} from "react";
 import axios from "axios";
+import {useGetMovies} from "../../assets/api/apiFunc";
 
 export function Home() {
     const navigation = useNavigation();
-    const [isLoading, setIsLoading] = useState(false);
-    const [movies, setMovies] = useState([]);
 
-    const fetchMovies = async () => {
-        try {
-            setIsLoading(!isLoading);
-            const url =
-                "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1";
-            const options = {
-                method: "GET",
-                headers: {
-                    accept: "application/json",
-                    Authorization: 'bearer token'
-                },
-            };
-            const {data} = await axios(url, options);
-            setMovies(data.results);
-            setIsLoading(!isLoading);
-        } catch (err) {
-            console.log(err);
-            setIsLoading(!isLoading);
-        }
-    };
-    console.log(movies);
-    useEffect(()=>{
-        fetchMovies();
-    }, []);
+    const {data : movies, isError} = useGetMovies();
+    // const [isLoading, setIsLoading] = useState(false);
+    // const [movies, setMovies] = useState([]);
+    //
+    // const fetchMovies = async () => {
+    //     try {
+    //         setIsLoading(!isLoading);
+    //         const url =
+    //             "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1";
+    //         const options = {
+    //             method: "GET",
+    //             headers: {
+    //                 accept: "application/json",
+    //                 Authorization: 'bearer token'
+    //             },
+    //         };
+    //         const {data} = await axios(url, options);
+    //         setMovies(data.results);
+    //         setIsLoading(!isLoading);
+    //     } catch (err) {
+    //         console.log(err);
+    //         setIsLoading(!isLoading);
+    //     }
+    // };
+    // console.log(movies);
+    // useEffect(()=>{
+    //     fetchMovies();
+    // }, []);
 
     const goToDetails = (movie) => {
         navigation.navigate("MovieDetail", {id : movie.id, title:movie.title});

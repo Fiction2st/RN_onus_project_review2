@@ -14,9 +14,26 @@ import { Settings } from './screens/Settings';
 import { Updates } from './screens/Updates';
 import { NotFound } from './screens/NotFound';
 import Home2 from "./screens/Home2";
+import Three from "./screens/Three";
+import {AntDesign} from "@expo/vector-icons";
 
 const HomeTabs = createBottomTabNavigator({
   screens: {
+    Home3: {
+      screen : Three,
+      screenOptions:{
+        tabBarLabelStyle: {
+          fontFamily: 'NotoSansKR',
+          fontSize:14,
+        },
+      },
+      options: {
+        title : '첫번째',
+        tabBarIcon: ({color, size}) => (
+            <AntDesign name="linechart" size={24} color={color} />
+        ),
+      },
+    },
     Home: {
       screen: Home,
       options: {
