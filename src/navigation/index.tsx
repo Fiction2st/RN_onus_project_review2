@@ -14,13 +14,13 @@ import { Settings } from './screens/Settings';
 import { Updates } from './screens/Updates';
 import { NotFound } from './screens/NotFound';
 import Home2 from "./screens/Home2";
-import Three from "./screens/Three";
+import MovieInfo from "./screens/MovieInfo";
 import {AntDesign} from "@expo/vector-icons";
 
 const HomeTabs = createBottomTabNavigator({
   screens: {
     Home3: {
-      screen : Three,
+      screen : MovieInfo,
       screenOptions:{
         tabBarLabelStyle: {
           fontFamily: 'NotoSansKR',
